@@ -13831,21 +13831,12 @@ xpiQYUnPGGNMyLCkZ4wxJmRY0jPGGBMy/h+e5IonMuwt9wAAAABJRU5ErkJggg==
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong>
-1] Grid Search technique is used for parameter tuning of the model i.e., it is used to find the best optimized hyper-parameters for the model.</p>
+<p><strong>Answer: </strong></p>
+<p>1] Grid Search technique is used for parameter tuning of the model i.e., it is used to find the best optimized hyper-parameters for the model.</p>
 <p>2] First, Grid Search will create the multiple combinations of the parameters, then for all the combinations the cross-validation is performed. At the end the best combination of the parameters is provided which can be used in the model.</p>
 <p>3] Grid Search can be applied using the function "grid_search.GridSearchCV" in sklearn.</p>
-<p>Example :</p>
-<p>from sklearn.neighbors import KNeighborsClassifier
-from sklearn.grid_search import GridSearchCV</p>
-<p>KN = KNeighborsClassifier()</p>
-<p>n_range = range(1,5)</p>
-<p>param_grid = { 'n_neighbors' : n_range }</p>
-<p>clf = GridSearchCV(KN, param_grid)
-clf.fit(iris.data, iris.target)</p>
-<p>print "best params are", clf.best<em>params</em></p>
-<p>In the above example, the parameter 'n_neighbors' was tuned for the KNeighborsClassifier.</p>
-<p>Another example for parameter in a model that can be optimized is the parameter 'alpha' value in the linear_model.Ridge() classifier. The classifier can be tested for various values of alpha using GridSearchCV function. At the end we will get the alpha which is best suited for the classifier.</p>
+<p>Example:
+    The parameter 'alpha' value in the linear_model.Ridge() classifier can be optimized using the GridSearchCV. The classifier can be tested for various values of alpha using GridSearchCV function. At the end we will get the alpha value which is best suited for the classifier.</p>
 
 </div>
 </div>
