@@ -12958,7 +12958,7 @@ $$ F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># TODO: Calculate accuracy</span>
@@ -12966,15 +12966,17 @@ $$ F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 
 <span class="n">act_no_of_individual_gt_50</span> <span class="o">=</span> <span class="mi">11208</span>
 <span class="n">pred_no_of_individual_gt_50</span> <span class="o">=</span> <span class="mi">45222</span>
 <span class="c1"># accuracy = pred_no.of_individual_gt_50 - actual_no.of_individual_gt_50 / total_no.of_individuals</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">45222</span> <span class="o">-</span> <span class="mi">11208</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">45222</span><span class="p">)</span>
+<span class="c1">#accuracy = float(45222 - 11208) / float(45222)</span>
+
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">n_greater_50k</span> <span class="o">*</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">n_records</span>
 
 <span class="c1"># TODO: Calculate F-score using the formula above for beta = 0.5</span>
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Let Postive(+) = &#39;&gt;50,000&#39;  and Negative(-) = &#39;&lt;=50,000&#39;</span>
 
-<span class="sd">True Positive(TP) = No. of positives(&gt;50,000) correctly predicted = 11208</span>
+<span class="sd">True Positive(TP) = No. of positives(&gt;50,000) correctly predicted = n_greater_50k(11208)</span>
 <span class="sd">True Negative(TN) = No. of negatives(&lt;=50,000) correctly predicted = 0</span>
-<span class="sd">False Postive(FP) = No. of negative(&lt;=50,000) incorrectly predicted as positive = 34014</span>
+<span class="sd">False Postive(FP) = No. of negative(&lt;=50,000) incorrectly predicted as positive = n_at_most_50k(34014)</span>
 <span class="sd">False Negative(FN) = No. of positive(&gt;50,000) incorrectly predicted as negative = 0</span>
 
 <span class="sd">Precision = TP / TP + FP</span>
@@ -12982,8 +12984,8 @@ $$ F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 
 <span class="sd">Recall = TP / TP + FN</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">precision</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">11208</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">11208</span> <span class="o">+</span> <span class="mi">34014</span><span class="p">)</span>
-<span class="n">recall</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="mi">11208</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="mi">11208</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_greater_50k</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_greater_50k</span> <span class="o">+</span> <span class="n">n_at_most_50k</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_greater_50k</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_greater_50k</span> <span class="o">+</span> <span class="mi">0</span><span class="p">)</span>
 
 
 <span class="n">numerator</span> <span class="o">=</span> <span class="n">precision</span> <span class="o">*</span> <span class="n">recall</span>
@@ -13011,7 +13013,7 @@ $$ F_{\beta} = (1 + \beta^2) \cdot \frac{precision \cdot recall}{\left( \beta^2 
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Naive Predictor: [Accuracy score: 0.7522, F-score: 0.2917]
+<pre>Naive Predictor: [Accuracy score: 0.2478, F-score: 0.2917]
 </pre>
 </div>
 </div>
@@ -14427,7 +14429,7 @@ Final F-score on the testing data: 0.7442
 <tbody>
 <tr>
 <td style="text-align:center">Accuracy Score</td>
-<td style="text-align:center">0.7522</td>
+<td style="text-align:center">0.2478</td>
 <td style="text-align:center">0.8576</td>
 <td style="text-align:center">0.8672</td>
 </tr>
