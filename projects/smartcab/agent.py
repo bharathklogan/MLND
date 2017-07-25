@@ -136,13 +136,14 @@ class LearningAgent(Agent):
             action = random.choice(self.valid_actions)   
         elif self.learning == True:
             if self.epsilon > random.random():
-                action = self.next_waypoint
+                action = random.choice(self.valid_actions)
             else:
                 maxQ = self.get_maxQ(self.state)
-                
+                tie_actions = []
                 for q_action,q_val in self.Q[self.state].items():
                     if q_val == maxQ:
-                        action = q_action 
+                        tie_actions.append(q_action)
+                action = random.choice(tie_actions)
         return action
 
 
@@ -194,7 +195,7 @@ def run():
     #   learning   - set to True to force the driving agent to use Q-learning
     #    * epsilon - continuous value for the exploration factor, default is 1
     #    * alpha   - continuous value for the learning rate, default is 0.5
-    agent = env.create_agent(LearningAgent,learning=True,alpha=0.2)
+    agent = env.create_agent(LearningAgent,learning=True)
     
     ##############
     # Follow the driving agent
@@ -216,7 +217,9 @@ def run():
     # Flags:
     #   tolerance  - epsilon tolerance before beginning testing, default is 0.05 
     #   n_test     - discrete number of testing trials to perform, default is 0
-    sim.run(n_test=10)
+    #sim.run(n_test=10,tolerance=0.09)
+    #sim.run(n_test=10,tolerance=0.009)
+    sim.run(n_test=10,tolerance=0.007)
 
 
 if __name__ == '__main__':
