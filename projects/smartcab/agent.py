@@ -45,7 +45,7 @@ class LearningAgent(Agent):
 		
         self.n_trials = self.n_trials + 1
 		
-        if testing == 'True':
+        if testing:
             self.epsilon, self.alpha = 0,0
         else:
             #self.epsilon = self.epsilon - 0.05 #initial decay function 
@@ -90,10 +90,7 @@ class LearningAgent(Agent):
         ###########
         # Calculate the maximum Q-value of all actions for a given state
 
-        if not state in self.Q.keys():
-            createQ(state)
-        else:
-            maxQ = max([self.Q[state][action] for action in self.Q[state]])
+        maxQ = max(self.Q[state].values())
 
         return maxQ 
 
@@ -107,11 +104,9 @@ class LearningAgent(Agent):
         # When learning, check if the 'state' is not in the Q-table
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
-
-        if not state in self.Q.keys():
-            self.Q[state] = {}
-            for action in self.valid_actions:
-                self.Q[state][action] = 0.0
+        if self.learning:
+            if not state in self.Q.keys():
+                self.Q[state] = {action : 0.0 for action in self.valid_actions}
         return
 
 
@@ -139,11 +134,9 @@ class LearningAgent(Agent):
                 action = random.choice(self.valid_actions)
             else:
                 maxQ = self.get_maxQ(self.state)
-                tie_actions = []
-                for q_action,q_val in self.Q[self.state].items():
-                    if q_val == maxQ:
-                        tie_actions.append(q_action)
+                tie_actions = [ action for action, q_value in self.Q[state].items() if q_value == maxQ]
                 action = random.choice(tie_actions)
+                
         return action
 
 
@@ -210,7 +203,8 @@ def run():
     #   display      - set to False to disable the GUI if PyGame is enabled
     #   log_metrics  - set to True to log trial and simulation results to /logs
     #   optimized    - set to True to change the default log file name
-    sim = Simulator(env,update_delay=0.01, log_metrics=True, optimized=True)
+    sim = Simulator(env, update_delay=0.01, log_metrics=True,optimized=True)
+    #sim = Simulator(env,update_delay=0.01, log_metrics=True, optimized=True)
     
     ##############
     # Run the simulator
@@ -219,7 +213,8 @@ def run():
     #   n_test     - discrete number of testing trials to perform, default is 0
     #sim.run(n_test=10,tolerance=0.09)
     #sim.run(n_test=10,tolerance=0.009)
-    sim.run(n_test=10,tolerance=0.007)
+    sim.run(n_test=20,tolerance=0.007)
+    #sim.run(n_test=10)
 
 
 if __name__ == '__main__':
