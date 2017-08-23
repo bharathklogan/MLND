@@ -22,4 +22,3 @@ Then whether you are using Anaconda2 or not, you need to install the following p
 
 The data set was downloaded from Kaggle (https://www.kaggle.com/dalpozz/creditcardfraud)
 
-The creditcard.csv file will be present inside the folder "creditcardfraud". 
