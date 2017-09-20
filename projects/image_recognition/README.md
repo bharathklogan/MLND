@@ -2,17 +2,22 @@
 
 ## Software Requirements
 
-This project was built and tested on Debain Jesse with Python 2.7.13
+This project was built and tested on Debian GNU/Linux 9 (stretch) OS with default inbuilt python of version 2.7.13
+
+## Packages Required 
+You need to install the package the yaml in debain using the following command
+
+sudo apt-get install python-yaml
 
 ## Files
 ### fileformat_conversion.py
 
-This is a python module which will be used as a tool to convert csv file into different format such as xml, html, json, yaml
+This is a python module which will be used as a tool to convert csv file into different format such as xml, html, json, yaml.
 We can extend this module to add any new functionality as this was implemented using Object Oriented Programming.
 
 ### test_fileconvert.py
 
-This is a standalone script used that I developed to test this tool.
+This is a standalone script that I developed to test this tool.
 
 ## Execution Instructions
 Modify the object initialization in the file test_fileconvert.py to include the input csv file and output file name without 
