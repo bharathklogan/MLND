@@ -21,7 +21,7 @@ This is a standalone script that I developed to test this tool.
 
 ## Packages Required(Optional) 
 
-You need to install the package the yaml in debain using the command below. This is required only if you want to test the file in yaml format.
+You need to install the package yaml in debain using the command below. This is required only if you want to test the file in yaml format.
 I have implemented tool to convert the given csv file into 4 different formats. In case, only 2 formats is required for you, then you can skip this format 
 and choose 2 out of remaining 3 formats.
 
@@ -30,7 +30,7 @@ sudo apt-get install python-yaml
 
 ## Data Validation
 
-Data will be validated as per the requirements i.e., 
+Data will be validated as per the given requirements i.e., 
 	
 	1. Valid utf-8 characters for the hotel name.
 	2. Valid url.
@@ -43,8 +43,8 @@ If any of these requirement is not satisfied, then that particular row will be r
 ## Execution Instructions
 
 Modify the object initialization in the file test_fileconvert.py to include the input csv file and output file name without 
-any extension, and you can remove any object method call according to your needs as I would all the available methods.
+any extension, and you can remove any object method call according to your needs as I would have used  all the available methods.
 Then, execute the script by simply issuing the following command:
 
-python test_fileconvert.py
+### python test_fileconvert.py
 
