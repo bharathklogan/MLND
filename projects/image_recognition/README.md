@@ -21,18 +21,23 @@ This is a standalone script that I developed to test this tool.
 
 ## Packages Required(Optional) 
 
-You need to install the package the yaml in debain using the following command. This is required only if you want to test the file in yaml format.
-But I have implemented tool to convert the given csv file into 4 formats. Incase if only 2 formats is required for you, then you can skip this format and
-choose 2 out of remaining 3 formats.
+You need to install the package the yaml in debain using the command below. This is required only if you want to test the file in yaml format.
+I have implemented tool to convert the given csv file into 4 different formats. In case, only 2 formats is required for you, then you can skip this format 
+and choose 2 out of remaining 3 formats.
 
-
+### Command to install yaml package
 sudo apt-get install python-yaml
 
 ## Data Validation
 
-Data V
-
-
+Data will be validated as per the requirements i.e., 
+	
+	1. Valid utf-8 characters for the hotel name.
+	2. Valid url.
+	3. Star rating cannot be negative.
+	
+	If any of these requirement is not satisfied, then that particular row will be removed before writing into another format.
+	
 
 ## Execution Instructions
 
