@@ -36,13 +36,15 @@ Data will be validated as per the requirements i.e.,
 	2. Valid url.
 	3. Star rating cannot be negative.
 	
-	If any of these requirement is not satisfied, then that particular row will be removed before writing into another format.
+	
+If any of these requirement is not satisfied, then that particular row will be removed before writing into another format.
 	
 
 ## Execution Instructions
 
 Modify the object initialization in the file test_fileconvert.py to include the input csv file and output file name without 
-any extension, then execute the script by simply issuing the following command:
+any extension, and you can remove any object method call according to your needs as I would all the available methods.
+Then, execute the script by simply issuing the following command:
 
 python test_fileconvert.py
 
